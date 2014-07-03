@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.gset.glasshomeauto.MainActivity" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"/>
+    
+    <item 
+        android:id="@+id/toggle"
+        android:title="@string/toggle"/>
+    
+    <item 
+        android:id="@+id/program"
+        android:title="@string/program"/>
+    
+    <item 
+        android:id="@+id/stream"
+        android:title="@string/stream"/>
+
+</menu>
