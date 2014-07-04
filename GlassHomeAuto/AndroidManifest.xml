@@ -17,6 +17,10 @@
             android:name="com.gset.glasshomeauto.MainActivity"
             android:label="@string/title_activity_main" >
         </activity>
+        <activity
+            android:name="com.gset.glasshomeauto.ToggleActivity"
+            android:label="@string/title_activity_toggle" >
+        </activity>
     </application>
 
 </manifest>
