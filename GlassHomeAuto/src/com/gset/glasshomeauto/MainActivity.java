@@ -20,7 +20,13 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		getWindow().requestFeature(WindowUtils.FEATURE_VOICE_COMMANDS);
 		setContentView(R.layout.activity_main);
-		openOptionsMenu();
+		getActionBar().hide();
+	}
+	
+	@Override
+	public void onAttachedToWindow() {
+	    super.onAttachedToWindow();
+	    openOptionsMenu();
 	}
 
 	@Override
