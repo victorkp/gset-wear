@@ -21,10 +21,6 @@
             android:name="com.gset.glasshomeauto.ToggleActivity"
             android:label="@string/title_activity_toggle" >
         </activity>
-        <activity
-            android:name="com.gset.glasshomeauto.LiveStreamingActivity"
-            android:label="@string/title_activity_live_streaming" >
-        </activity>
     </application>
 
 </manifest>

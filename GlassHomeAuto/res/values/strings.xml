@@ -9,6 +9,5 @@
     <string name="program">Program</string>
     <string name="stream">Stream</string>
     <string name="title_activity_toggle">ToggleActivity</string>
-    <string name="title_activity_live_streaming">LiveStreamingActivity</string>
 
 </resources>

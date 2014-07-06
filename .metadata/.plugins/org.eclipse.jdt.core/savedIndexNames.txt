@@ -1,6 +1,0 @@
-INDEX VERSION 1.126+C:\Users\Murdock\Documents\GitHub\gset-wear\.metadata\.plugins\org.eclipse.jdt.core
-3970876191.index
-392632006.index
-4045097291.index
-229709462.index
-3272183251.index
