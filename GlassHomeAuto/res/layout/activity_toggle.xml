@@ -1,7 +1,42 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.gset.glasshomeauto.ToggleActivity"
-    tools:ignore="MergeRootFrame" />
+    tools:ignore="MergeRootFrame"
+    android:orientation="vertical"
+    
+    >
+    
+   		<TextView
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+		android:gravity="center"
+        android:text="@string/light_toggle"
+        android:textSize="70px"
+        android:textColor="#FFFFFF" />
+   		
+       <TextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+		android:gravity="center"
+        android:text="@string/tv_toggle"
+        android:textSize="70px"
+        android:textColor="#FFFFFF" />
+       
+       	<TextView
+        android:id="@+id/text3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+		android:gravity="center"
+        android:text="@string/ac_toggle"
+        android:textSize="70px"
+        android:textColor="#FFFFFF" />
+    
+    
+    </LinearLayout>
+
+	

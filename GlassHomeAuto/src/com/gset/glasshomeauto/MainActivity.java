@@ -10,7 +10,7 @@ import android.view.Window;
 import com.google.android.glass.view.WindowUtils;
 
 /**
- * @author Roland
+ * @author Roland (the most amazing person on earth)
  *
  */
 public class MainActivity extends Activity {
