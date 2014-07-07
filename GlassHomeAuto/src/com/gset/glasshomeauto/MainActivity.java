@@ -1,6 +1,7 @@
 package com.gset.glasshomeauto;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -60,10 +61,16 @@ public class MainActivity extends Activity {
 			int id = item.getItemId();
 			switch(id)	{
 			case R.id.toggle:
+				Intent toggleIntent = new Intent(MainActivity.this, ToggleActivity.class);
+				startActivity(toggleIntent);
 				break;
 			case R.id.program:
+				//Intent programIntent = new Intent(MainActivity.this, TaskActivity.class);
+				//startActivity(streamIntent);
 				break;
 			case R.id.stream:
+				Intent streamIntent = new Intent(MainActivity.this, LiveStreamingActivity.class);
+				startActivity(streamIntent);
 				break;
 			}
 	    }
