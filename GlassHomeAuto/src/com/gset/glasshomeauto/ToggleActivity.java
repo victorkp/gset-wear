@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.google.android.glass.view.WindowUtils;
@@ -30,6 +31,8 @@ public class ToggleActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		getWindow().requestFeature(WindowUtils.FEATURE_VOICE_COMMANDS);
+		
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		
 		setContentView(R.layout.activity_toggle);
 		
