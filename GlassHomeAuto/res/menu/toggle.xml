@@ -7,5 +7,15 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/action_settings"/>
+    <item 
+        android:id="@+id/light_toggle_menu"
+        android:title="@string/light_toggle"/>
+     <item 
+        android:id="@+id/tv_toggle_menu"
+        android:title="@string/tv_toggle"/>
+      <item 
+        android:id="@+id/ac_toggle_menu"
+        android:title="@string/ac_toggle"/>
+    
 
 </menu>

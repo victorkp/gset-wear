@@ -1,8 +1,8 @@
 package com.gset.glasshomeauto;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,7 +55,7 @@ public class ToggleActivity extends Activity {
 		getMenuInflater().inflate(R.menu.toggle, menu);
 		return true;
 	}
-	
+	/*
 	@Override
 	public boolean onCreatePanelMenu(int featureId, Menu menu) {
 		if (featureId == WindowUtils.FEATURE_VOICE_COMMANDS) {
@@ -65,41 +65,43 @@ public class ToggleActivity extends Activity {
 
 		return super.onCreatePanelMenu(featureId, menu);
 	}
-
+	*/
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
-			switch (mCurrentStage){
-			case Start:
-				mText1.setText(getString(R.string.title_activity_toggle));
-				mCurrentStage = Stage.Start;
-				break;
-			case Option1:
-				mText1.setText(getString(R.string.light_toggle));
-				mCurrentStage = Stage.Option1; 
-				break; 
-			case Option2:
-				mText1.setText(getString(R.string.ac_toggle));
-				mCurrentStage = Stage.Option2; 
-			case End:
-				mText1.setText(getString(R.string.ac_toggle));
-				mCurrentStage = Stage.Option2; 			
-				
-			}
 			openOptionsMenu();
 			return true;
 		}
-
 		return super.onKeyDown(keyCode, event);
 	}
 
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 	    if (featureId == WindowUtils.FEATURE_VOICE_COMMANDS || featureId == Window.FEATURE_OPTIONS_PANEL) {
+	    	if (featureId == WindowUtils.FEATURE_VOICE_COMMANDS || featureId == Window.FEATURE_OPTIONS_PANEL) {
+				int id = item.getItemId();
+				switch(id)	{
+				case R.id.light_toggle_menu:
+					//mText1.setText(getString(R.string.light_toggle));
+					Intent streamIntent = new Intent(ToggleActivity.this, LiveStreamingActivity.class);
+					startActivity(streamIntent);
+					break;
+				case R.id.tv_toggle_menu:
+					//mText1.setText(getString(R.string.tv_toggle));
+					Intent streamIntent2 = new Intent(ToggleActivity.this, LiveStreamingActivity.class);
+					startActivity(streamIntent2);
+					break;
+				case R.id.ac_toggle_menu:
+					//mText1.setText(getString(R.string.ac_toggle));
+					Intent streamIntent3 = new Intent(ToggleActivity.this, LiveStreamingActivity.class);
+					startActivity(streamIntent3);
+					break;
 	    	//FILL IN IF STATEMENTS HERE
 	    }
-	    
+	    	}
 	    return super.onMenuItemSelected(featureId, item);
+	    }
+		return false;
 	}
 	
 	
