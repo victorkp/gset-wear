@@ -2,6 +2,7 @@ package com.gset.glasshomeauto;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,7 +28,7 @@ public class ToggleActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		getWindow().requestFeature(WindowUtils.FEATURE_VOICE_COMMANDS);
 		
 		setContentView(R.layout.activity_toggle);
@@ -42,12 +43,6 @@ public class ToggleActivity extends Activity {
 		*/
 		
 		mCurrentStage = Stage.Start;
-		mText1.setText(getString(R.string.title_activity_toggle));
-		
-		
-		
-		
-		
 	}
 
 	@Override

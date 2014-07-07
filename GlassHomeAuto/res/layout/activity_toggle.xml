@@ -6,7 +6,7 @@
     tools:context="com.gset.glasshomeauto.ToggleActivity"
     tools:ignore="MergeRootFrame"
     android:orientation="vertical"
-    
+    android:background="#000000"
     >
     
    		<TextView
