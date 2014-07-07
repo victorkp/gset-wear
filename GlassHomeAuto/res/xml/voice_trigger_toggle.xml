@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <trigger keyword="@string/title_activity_toggle" />
+</resources>

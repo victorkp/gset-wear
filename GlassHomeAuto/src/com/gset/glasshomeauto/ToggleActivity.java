@@ -1,7 +1,6 @@
 package com.gset.glasshomeauto;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -19,9 +18,12 @@ public class ToggleActivity extends Activity {
 	private Stage mCurrentStage;
 	
 	private TextView mText1;
+	
+	/*
 	private TextView mText2;
 	private TextView mText3;
-
+	*/
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,12 +32,14 @@ public class ToggleActivity extends Activity {
 		
 		setContentView(R.layout.activity_toggle);
 		
+		/*
 		mText1 = (TextView) findViewById(R.id.text1);
 		mText1.setText("Light Toggle");
 		mText2 = (TextView) findViewById(R.id.text2);
 		mText2.setText("TV Toggle");
 		mText3 = (TextView) findViewById(R.id.text3);
 		mText3.setText("A/C Toggle");
+		*/
 		
 		mCurrentStage = Stage.Start;
 		mText1.setText(getString(R.string.title_activity_toggle));
@@ -67,6 +71,23 @@ public class ToggleActivity extends Activity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
+			switch (mCurrentStage){
+			case Start:
+				mText1.setText(getString(R.string.title_activity_toggle));
+				mCurrentStage = Stage.Start;
+				break;
+			case Option1:
+				mText1.setText(getString(R.string.light_toggle));
+				mCurrentStage = Stage.Option1; 
+				break; 
+			case Option2:
+				mText1.setText(getString(R.string.ac_toggle));
+				mCurrentStage = Stage.Option2; 
+			case End:
+				mText1.setText(getString(R.string.ac_toggle));
+				mCurrentStage = Stage.Option2; 			
+				
+			}
 			openOptionsMenu();
 			return true;
 		}

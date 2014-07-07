@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -14,10 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 		android:gravity="center"
-        android:text="@string/light_toggle"
+        android:text="@string/title_activity_toggle"
         android:textSize="70px"
-        android:textColor="#FFFFFF" />
+        android:textColor="#ffffff" />
    		
+   		<!--
        <TextView
         android:id="@+id/text2"
         android:layout_width="match_parent"
@@ -25,7 +26,7 @@
 		android:gravity="center"
         android:text="@string/tv_toggle"
         android:textSize="70px"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFF" />
        
        	<TextView
         android:id="@+id/text3"
@@ -34,9 +35,9 @@
 		android:gravity="center"
         android:text="@string/ac_toggle"
         android:textSize="70px"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFF" />
+    	-->
     
-    
-    </LinearLayout>
+    </RelativeLayout>
 
 	
