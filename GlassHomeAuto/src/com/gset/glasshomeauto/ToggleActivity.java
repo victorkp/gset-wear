@@ -1,16 +1,5 @@
 package com.gset.glasshomeauto;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.TextView;
-
-import com.google.android.glass.view.WindowUtils;
 public class ToggleActivity extends Activity {
 	
 	private enum Stage {
@@ -71,7 +60,7 @@ public class ToggleActivity extends Activity {
 		if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
 			openOptionsMenu();
 			return true;
-		}
+		}  
 		return super.onKeyDown(keyCode, event);
 	}
 
