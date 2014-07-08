@@ -3,8 +3,6 @@
  */
 package com.gset.glasshomeauto.network;
 
-import com.victor.kaiser.pendergrast.glass.notes.api.GetNotesTask.OnGetNotesListener;
-
 import android.os.AsyncTask;
 
 /**
