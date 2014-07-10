@@ -3,20 +3,22 @@
     package="com.gset.glasshomeauto"
     android:versionCode="1"
     android:versionName="1.0" >
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-sdk
         android:minSdkVersion="19"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="com.google.android.glass.permission.DEVELOPMENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name">
+        android:label="@string/app_name" >
         <activity
             android:name="com.gset.glasshomeauto.MainActivity"
             android:label="@string/title_activity_main" >
@@ -53,6 +55,14 @@
             <meta-data
                 android:name="com.google.android.glass.VoiceTrigger"
                 android:resource="@xml/voice_trigger_tasks" />
+        </activity>
+        <activity
+            android:name="com.gset.glasshomeauto.LightActivity"
+            android:label="@string/title_activity_light" >
+        </activity>
+        <activity
+            android:name="com.gset.glasshomeauto.LightStatusActivity"
+            android:label="@string/title_activity_light_status" >
         </activity>
     </application>
 

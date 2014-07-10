@@ -1,0 +1,94 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://glass-home-auto.appspot.com/_ah/api",
+  "name" : "toggle",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://glass-home-auto.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "toggle.toggle.put" : {
+      "path" : "toggle_put",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.glass.home.auto.ToggleAPI.putStates",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "toggle.toggle.get" : {
+      "path" : "toggle_get",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.glass.home.auto.ToggleAPI.getStates",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "States" : {
+        "id" : "States",
+        "type" : "object",
+        "properties" : {
+          "lights" : {
+            "type" : "boolean"
+          },
+          "motion" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "ac" : {
+            "type" : "boolean"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.glass.home.auto.ToggleAPI.putStates" : {
+        "request" : {
+          "$ref" : "States"
+        },
+        "response" : {
+          "$ref" : "States"
+        }
+      },
+      "com.glass.home.auto.ToggleAPI.getStates" : {
+        "response" : {
+          "$ref" : "States"
+        }
+      }
+    }
+  }
+}

@@ -15,18 +15,25 @@
     <string name="light_toggle">Lights</string>
     <string name="tv_toggle">TV</string>
     <string name="ac_toggle">A/C</string>
+    
+    <string name="OFF">OFF</string>
+    <string name="ON">ON</string>
 
     <!-- Toggle Activity Strings End -->
 
     <string name="start_home_auto">start home auto</string>
     <string name="title_activity_live_streaming">LiveStreamingActivity</string>
-    
+
     <!-- Task Activity Strings -->
-    
+
     <string name="title_activity_task">TaskActivity</string>
     <string name="menu">Manage Tasks</string>
     <string name="add_task">Add Task</string>
     <string name="task1">Task 1</string>
     <string name="tasks">Manage Tasks</string>
+    <string name="title_activity_light">LightActivity</string>
+    
+    <string name="title_activity_light_status">LightStatusActivity</string>
 
+    <string name="j_son">{lights:false, a_c:false, motion:0}</string>
 </resources>

@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.gset.glasshomeauto.LightStatusActivity" >
+
+    <item
+        android:id="@+id/light_on"
+        android:title="@string/ON"/>
+    <item
+        android:id="@+id/light_off"
+        android:title="@string/OFF"/>
+        
+
+</menu>

@@ -84,17 +84,19 @@ public class ToggleActivity extends Activity {
 				switch(id)	{
 				case R.id.light_toggle_menu:
 					//mText1.setText(getString(R.string.light_toggle));
-					Intent streamIntent = new Intent(ToggleActivity.this, LiveStreamingActivity.class);
-					startActivity(streamIntent);
+					Intent goToLight= new Intent(ToggleActivity.this, LightStatusActivity.class);
+					startActivity(goToLight);
 					break;
+				/*	
 				case R.id.tv_toggle_menu:
 					//mText1.setText(getString(R.string.tv_toggle));
 					Intent streamIntent2 = new Intent(ToggleActivity.this, LiveStreamingActivity.class);
 					startActivity(streamIntent2);
 					break;
+				*/
 				case R.id.ac_toggle_menu:
 					//mText1.setText(getString(R.string.ac_toggle));
-					Intent streamIntent3 = new Intent(ToggleActivity.this, LiveStreamingActivity.class);
+					Intent streamIntent3 = new Intent(ToggleActivity.this, MainActivity.class);
 					startActivity(streamIntent3);
 					break;
 	    	//FILL IN IF STATEMENTS HERE
