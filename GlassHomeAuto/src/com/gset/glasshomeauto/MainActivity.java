@@ -65,8 +65,8 @@ public class MainActivity extends Activity {
 				startActivity(toggleIntent);
 				break;
 			case R.id.program:
-				//Intent programIntent = new Intent(MainActivity.this, TaskActivity.class);
-				//startActivity(streamIntent);
+				Intent programIntent = new Intent(MainActivity.this, TaskActivity.class);
+				startActivity(programIntent);
 				break;
 			case R.id.stream:
 				Intent streamIntent = new Intent(MainActivity.this, LiveStreamingActivity.class);
