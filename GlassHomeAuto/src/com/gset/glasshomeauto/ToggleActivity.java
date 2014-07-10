@@ -3,6 +3,7 @@ package com.gset.glasshomeauto;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,7 +13,9 @@ import android.widget.TextView;
 
 import com.google.android.glass.view.WindowUtils;
 
-public class ToggleActivity extends Activity {
+import com.gset.glasshomeauto.network.*;
+
+public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGetListener, TogglePutTask.OnTogglePutListener {
 	
 	private enum Stage {
 		Start, Option1, Option2, End
@@ -20,12 +23,12 @@ public class ToggleActivity extends Activity {
 
 	private Stage mCurrentStage;
 	
-	private TextView mText1;
+	private ToggleGetTask tgt;
+	private TogglePutTask tpt;
 	
-	/*
-	private TextView mText2;
-	private TextView mText3;
-	*/
+	private MenuItem lightText;
+	private MenuItem acText;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +40,10 @@ public class ToggleActivity extends Activity {
 		
 		setContentView(R.layout.activity_toggle);
 		
-		/*
-		mText1 = (TextView) findViewById(R.id.text1);
-		mText1.setText("Light Toggle");
-		mText2 = (TextView) findViewById(R.id.text2);
-		mText2.setText("TV Toggle");
-		mText3 = (TextView) findViewById(R.id.text3);
-		mText3.setText("A/C Toggle");
-		*/
+		Log.i("INFO", "Executing tgt, tpt");
+		tgt = new ToggleGetTask();
+		tgt.setListener(this);
+		tgt.execute();
 		
 		mCurrentStage = Stage.Start;
 	}
@@ -54,6 +53,18 @@ public class ToggleActivity extends Activity {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.toggle, menu);
+		
+		lightText = menu.findItem(R.id.light_toggle_menu);
+		if(States.isLights())
+			lightText.setTitle("Lights: ON");
+		else
+			lightText.setTitle("Lights: OFF");
+		acText = menu.findItem(R.id.ac_toggle_menu);
+		if(States.isA_c())
+			acText.setTitle("A/C: ON");
+		else
+			acText.setTitle("A/C: OFF");
+		
 		return true;
 	}
 	/*
@@ -83,21 +94,30 @@ public class ToggleActivity extends Activity {
 				int id = item.getItemId();
 				switch(id)	{
 				case R.id.light_toggle_menu:
-					//mText1.setText(getString(R.string.light_toggle));
-					Intent goToLight= new Intent(ToggleActivity.this, LightStatusActivity.class);
-					startActivity(goToLight);
+					tpt = new TogglePutTask();
+					tpt.setListener(this);
+					if(States.isLights())
+						lightText.setTitle("Lights: ON");
+					else
+						lightText.setTitle("Lights: OFF");
+					States.switchLights();
+					tpt.setJSON("{\"lights\": \"" + States.isLights()
+							+ "\", \"a_c\": \""+States.isA_c()
+							+ "\", \"motion\": \""+States.getMotion()+"\"}");
+					tpt.execute();
 					break;
-				/*	
-				case R.id.tv_toggle_menu:
-					//mText1.setText(getString(R.string.tv_toggle));
-					Intent streamIntent2 = new Intent(ToggleActivity.this, LiveStreamingActivity.class);
-					startActivity(streamIntent2);
-					break;
-				*/
 				case R.id.ac_toggle_menu:
-					//mText1.setText(getString(R.string.ac_toggle));
-					Intent streamIntent3 = new Intent(ToggleActivity.this, MainActivity.class);
-					startActivity(streamIntent3);
+					tpt = new TogglePutTask();
+					tpt.setListener(this);
+					if(States.isA_c())
+						acText.setTitle("A/C: ON");
+					else
+						acText.setTitle("A/C: OFF");
+					States.switchA_c();
+					tpt.setJSON("{\"lights\": \"" + States.isLights()
+							+ "\", \"a_c\": \""+States.isA_c()
+							+ "\", \"motion\": \""+States.getMotion()+"\"}");
+					tpt.execute();
 					break;
 	    	//FILL IN IF STATEMENTS HERE
 	    }
@@ -118,6 +138,25 @@ public class ToggleActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onReceiveStates(boolean success, String response) {
+		if(success)	{
+			ToggleJsonParser tjp = new ToggleJsonParser(response);
+			States.setLights(tjp.getLights());
+			States.setA_c(tjp.getA_C());
+			States.setMotion(tjp.getMotion());
+			
+			Log.i("INFO", "LIGHTS: "+States.isLights()+" AC: "+States.isA_c()+" Motion: "+States.getMotion());
+		}
+	}
+
+	@Override
+	public void onResponse(boolean success, String response) {
+		if(success)	{
+			;
+		}
 	}
 	
 	
