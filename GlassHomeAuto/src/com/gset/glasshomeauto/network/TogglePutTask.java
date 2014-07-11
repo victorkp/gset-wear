@@ -43,6 +43,7 @@ public class TogglePutTask extends AsyncTask<String, Integer, Integer> {
 
 			HttpsURLConnection con = (HttpsURLConnection) urlObject.openConnection();
 			con.setRequestMethod("PUT");
+			con.setRequestProperty("Content-Type", "application/json");
 			con.setDoOutput(true);
 			con.connect();
 			OutputStreamWriter output = new OutputStreamWriter(con.getOutputStream());

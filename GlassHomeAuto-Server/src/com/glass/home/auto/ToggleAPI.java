@@ -26,6 +26,9 @@ public class ToggleAPI {
 	
 	@ApiMethod(name="toggle.put", path = "toggle_put", httpMethod = HttpMethod.PUT)
 	public States putStates(States s)	{
+		if(s.getMotion() == 1){//arduino sets motion to 1 when motion detected
+			s.setMotion(System.currentTimeMillis());
+		}
 		states = s;
 		return states;
 	}

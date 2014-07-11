@@ -36,6 +36,7 @@ public class ToggleGetTask extends AsyncTask<String, Integer, Integer> {
 			URL urlObj = new URL(URL_TOGGLE_GET);
 			HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
 			con.setRequestMethod("GET");
+			Log.i("INFO", ""+con.getResponseCode());
 			int serverCode = con.getResponseCode();
 			Log.i("INFO", "toggle get servercode: "+serverCode);
 			if(serverCode != 200)	{

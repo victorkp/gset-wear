@@ -40,19 +40,22 @@ public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGe
 		
 		setContentView(R.layout.activity_toggle);
 		
-		Log.i("INFO", "Executing tgt, tpt");
-		tgt = new ToggleGetTask();
-		tgt.setListener(this);
-		tgt.execute();
-		
 		mCurrentStage = Stage.Start;
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.toggle, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		Log.i("INFO", "Executing tgt");
+		tgt = new ToggleGetTask();
+		tgt.setListener(this);
+		tgt.execute();
 		
 		lightText = menu.findItem(R.id.light_toggle_menu);
 		if(States.isLights())
@@ -64,9 +67,9 @@ public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGe
 			acText.setTitle("A/C: ON");
 		else
 			acText.setTitle("A/C: OFF");
-		
-		return true;
+		return super.onPrepareOptionsMenu(menu);
 	}
+
 	/*
 	@Override
 	public boolean onCreatePanelMenu(int featureId, Menu menu) {
@@ -101,9 +104,13 @@ public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGe
 					else
 						lightText.setTitle("Lights: OFF");
 					States.switchLights();
-					tpt.setJSON("{\"lights\": \"" + States.isLights()
-							+ "\", \"a_c\": \""+States.isA_c()
-							+ "\", \"motion\": \""+States.getMotion()+"\"}");
+					String lights = "false";
+					String ac = "false";
+					if(States.isLights()) lights = "true";
+					if(States.isA_c()) ac = "true";
+					tpt.setJSON("{ \"lights\" : \"" + lights + "\"," +
+							"\"ac\" : \"" + ac + "\"," +
+							"\"motion\" : \"" + States.getMotion() + "\" } ");
 					tpt.execute();
 					break;
 				case R.id.ac_toggle_menu:
@@ -114,9 +121,13 @@ public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGe
 					else
 						acText.setTitle("A/C: OFF");
 					States.switchA_c();
-					tpt.setJSON("{\"lights\": \"" + States.isLights()
-							+ "\", \"a_c\": \""+States.isA_c()
-							+ "\", \"motion\": \""+States.getMotion()+"\"}");
+					String lights1 = "false";
+					String ac1 = "false";
+					if(States.isLights()) lights1 = "true";
+					if(States.isA_c()) ac1 = "true";
+					tpt.setJSON("{ \"lights\": \"" + lights1 + "\"," +
+							"\"ac\": \"" + ac1 + "\"," +
+							"\"motion\": \"" + States.getMotion() + "\" } ");
 					tpt.execute();
 					break;
 	    	//FILL IN IF STATEMENTS HERE
