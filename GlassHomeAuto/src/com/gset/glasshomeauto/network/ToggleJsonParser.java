@@ -2,6 +2,8 @@ package com.gset.glasshomeauto.network;
 
 import org.json.JSONObject;
 
+import android.util.Log;
+
 
 public class ToggleJsonParser {
 
@@ -10,7 +12,7 @@ public class ToggleJsonParser {
 	 */
 	private static class JSONFields {
 		public static final String LIGHTS = "lights";
-		public static final String A_C = "a_c";
+		public static final String A_C = "ac";
 		public static final String Motion = "motion";
 	}
 

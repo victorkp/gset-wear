@@ -52,7 +52,7 @@ public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGe
 	
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		Log.i("INFO", "Executing tgt");
+		//Log.i("INFO", "Executing tgt");
 		tgt = new ToggleGetTask();
 		tgt.setListener(this);
 		tgt.execute();
@@ -153,6 +153,7 @@ public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGe
 
 	@Override
 	public void onReceiveStates(boolean success, String response) {
+		Log.i("INFO", "Success: "+success+"/Response: "+response);
 		if(success)	{
 			ToggleJsonParser tjp = new ToggleJsonParser(response);
 			States.setLights(tjp.getLights());

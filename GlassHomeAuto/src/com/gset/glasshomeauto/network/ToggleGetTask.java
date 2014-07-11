@@ -32,13 +32,11 @@ public class ToggleGetTask extends AsyncTask<String, Integer, Integer> {
 	@Override
 	protected Integer doInBackground(String... params) {
 		try	{
-			Log.i("INFO", "doing in background");
+			//Log.i("INFO", "doing in background");
 			URL urlObj = new URL(URL_TOGGLE_GET);
 			HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
 			con.setRequestMethod("GET");
-			Log.i("INFO", ""+con.getResponseCode());
 			int serverCode = con.getResponseCode();
-			Log.i("INFO", "toggle get servercode: "+serverCode);
 			if(serverCode != 200)	{
 				//get errors
 				BufferedReader r = new BufferedReader(new InputStreamReader(con.getErrorStream()));
@@ -52,7 +50,7 @@ public class ToggleGetTask extends AsyncTask<String, Integer, Integer> {
 				for (String line = r.readLine(); line != null; line = r.readLine()) {
 					mResponse += line;
 				}
-				Log.i("INFO", "toggle get response: "+mResponse);
+				Log.i("INFO", "toggle GET response: "+mResponse);
 				return 1;//success code
 			}
 		} catch(Exception e)	{

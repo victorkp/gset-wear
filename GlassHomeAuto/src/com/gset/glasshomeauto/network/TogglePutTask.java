@@ -53,7 +53,6 @@ public class TogglePutTask extends AsyncTask<String, Integer, Integer> {
 			
 			int serverCode = con.getResponseCode();
 			
-			Log.i("INFO", "toggle get servercode: "+serverCode);
 			if(serverCode != 200)	{
 				//get errors
 				BufferedReader r = new BufferedReader(new InputStreamReader(con.getErrorStream()));
@@ -67,7 +66,7 @@ public class TogglePutTask extends AsyncTask<String, Integer, Integer> {
 				for (String line = r.readLine(); line != null; line = r.readLine()) {
 					mResponse += line;
 				}
-				Log.i("INFO", "toggle get response: "+mResponse);
+				Log.i("INFO", "toggle PUT response: "+mResponse);
 				return 1;//success code
 			}
 			
