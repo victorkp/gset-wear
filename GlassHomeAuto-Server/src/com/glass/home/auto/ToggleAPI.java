@@ -18,6 +18,9 @@ public class ToggleAPI {
 	
 	@ApiMethod(name = "toggle.get", path = "toggle_get", httpMethod = HttpMethod.GET)
 	public States getStates()	{
+		if(states == null)	{
+			states = new States();
+		}
 		return states;
 	}
 	

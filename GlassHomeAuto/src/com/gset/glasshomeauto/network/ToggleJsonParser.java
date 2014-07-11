@@ -26,14 +26,6 @@ public class ToggleJsonParser {
 			lights = obj.getBoolean(JSONFields.LIGHTS);
 			a_c = obj.getBoolean(JSONFields.A_C);
 			motion = obj.getLong(JSONFields.Motion);
-			
-
-			/*// If there are no notes, then it won't even be in the JSON
-			if(obj.has(JSONFields.NOTES)){
-				mNotes = obj.getString(JSONFields.NOTES);
-			} else {
-				mNotes = "";
-			}*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

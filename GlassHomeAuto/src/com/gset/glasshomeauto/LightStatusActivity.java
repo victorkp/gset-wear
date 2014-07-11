@@ -24,7 +24,10 @@ import android.widget.TextView;
 import com.google.android.glass.view.WindowUtils;
 
 
-
+/**
+ * @deprecated
+ *
+ */
 public class LightStatusActivity extends Activity {
 	
 	TextView jason = (TextView) findViewById(R.string.j_son); 
