@@ -1,6 +1,8 @@
 package com.gset.glasshomeauto;
 
 import android.app.Activity;
+import android.content.Context;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.KeyEvent;
@@ -9,15 +11,21 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.google.android.glass.media.Sounds;
+
 public class TaskActivity extends Activity {
 	
 	private enum Stage {
-		Start, TaskMenu
+		Start, TaskMenu, AddTask, TimeLocation, SetHours, SetMins1, SetMins2, AM_PM, Confirm
 	}
 	
 	private Stage mCurrentStage;
 	
 	private TextView mText;
+	
+	private int toggleID;
+	private int hour, min;
+	private boolean am;
 
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +60,41 @@ public class TaskActivity extends Activity {
 				invalidateOptionsMenu();
 				openOptionsMenu();
 				break;
+			case AddTask:
+				//Show the menu for the toggles and pick one
+				playClickSound();
+				invalidateOptionsMenu();
+				openOptionsMenu();
+				break;
+			case TimeLocation:
+				playClickSound();
+				invalidateOptionsMenu();
+				openOptionsMenu();
+				break;
+			case SetHours:
+				playClickSound();
+				invalidateOptionsMenu();
+				openOptionsMenu();
+				break;
+			case SetMins1:
+				playClickSound();
+				invalidateOptionsMenu();
+				openOptionsMenu();
+				break;
+			case SetMins2:
+				playClickSound();
+				invalidateOptionsMenu();
+				openOptionsMenu();
+				break;
+			case AM_PM:
+				playClickSound();
+				invalidateOptionsMenu();
+				openOptionsMenu();
+				break;
+			case Confirm:
+				playSuccessSound();
+			default:
+				break;
 			}
 			
 			return true;
@@ -67,6 +110,24 @@ public class TaskActivity extends Activity {
 			// the colors on it
 			getMenuInflater().inflate(R.menu.task_menu, menu);
 		}
+		else if (mCurrentStage == Stage.AddTask) {
+			getMenuInflater().inflate(R.menu.toggle, menu);
+		}
+		else if (mCurrentStage == Stage.TimeLocation) {
+			getMenuInflater().inflate(R.menu.time_location, menu);
+		}
+		else if(mCurrentStage == Stage.SetHours) {
+			getMenuInflater().inflate(R.menu.set_hours, menu);
+		}
+		else if(mCurrentStage == Stage.SetMins1) {
+			getMenuInflater().inflate(R.menu.set_mins1, menu);
+		}
+		else if(mCurrentStage == Stage.SetMins2){
+			getMenuInflater().inflate(R.menu.set_mins2, menu);
+		}
+		else if(mCurrentStage == Stage.AM_PM) {
+			getMenuInflater().inflate(R.menu.am_pm, menu);
+		}
 		return true;
 	}
 		
@@ -75,9 +136,176 @@ public class TaskActivity extends Activity {
 		switch(item.getItemId()){
 		case R.id.addTask:
 			//some stuff
+			mCurrentStage = Stage.AddTask;
+			setText(getString(R.string.add_tasks_stage));
 			return true;
 		case R.id.task1:
 			//more stuff
+			return true;
+			
+		case R.id.light_toggle_menu:
+		case R.id.ac_toggle_menu:
+			toggleID = item.getItemId();
+			mCurrentStage = Stage.TimeLocation;
+			setText(getString(R.string.time_location));
+			return true;
+			
+		case R.id.stime:
+			mCurrentStage = Stage.SetHours;
+			setText(getString(R.string.hour));
+			return true;
+			
+		case R.id.h1:
+			hour = 1;
+			mCurrentStage = Stage.SetMins1;
+			setText(getString(R.string.min1));
+			return true;
+		case R.id.h2:
+			hour = 2;
+			mCurrentStage = Stage.SetMins1;
+			setText(getString(R.string.min1));
+			return true;
+		case R.id.h3:
+			hour = 3;
+			mCurrentStage = Stage.SetMins1;
+			setText(getString(R.string.min1));
+			return true;
+		case R.id.h4:
+			hour = 4;
+			mCurrentStage = Stage.SetMins1;
+			setText(getString(R.string.min1));
+			return true;
+		case R.id.h5:
+			hour = 5;
+			mCurrentStage = Stage.SetMins1;
+			setText(getString(R.string.min1));
+			return true;
+		case R.id.h6:
+			hour = 6;
+			mCurrentStage = Stage.SetMins1;
+			setText(getString(R.string.min1));
+			return true;
+		case R.id.h7:
+			hour = 7;
+			mCurrentStage = Stage.SetMins1;
+			setText(getString(R.string.min1));
+			return true;
+		case R.id.h8:
+			hour = 8;
+			mCurrentStage = Stage.SetMins1;
+			setText(getString(R.string.min1));
+			return true;
+		case R.id.h9:
+			hour = 9;
+			mCurrentStage = Stage.SetMins1;
+			setText(getString(R.string.min1));
+			return true;
+		case R.id.h10:
+			hour = 10;
+			mCurrentStage = Stage.SetMins1;
+			setText(getString(R.string.min1));
+			return true;
+		case R.id.h11:
+			hour = 11;
+			mCurrentStage = Stage.SetMins1;
+			setText(getString(R.string.min1));
+			return true;
+		case R.id.h12:
+			hour = 12;
+			mCurrentStage = Stage.SetMins1;
+			setText(getString(R.string.min1));
+			return true;
+			
+		case R.id.mzero:
+			min = 0;
+			mCurrentStage = Stage.SetMins2;
+			setText(getString(R.string.min2));
+			return true;
+		case R.id.m10:
+			min = 10;
+			mCurrentStage = Stage.SetMins2;
+			setText(getString(R.string.min2));
+			return true;
+		case R.id.m20:
+			min = 20;
+			mCurrentStage = Stage.SetMins2;
+			setText(getString(R.string.min2));
+			return true;
+		case R.id.m30:
+			min = 30;
+			mCurrentStage = Stage.SetMins2;
+			setText(getString(R.string.min2));
+			return true;
+		case R.id.m40:
+			min = 40;
+			mCurrentStage = Stage.SetMins2;
+			setText(getString(R.string.min2));
+			return true;
+		case R.id.m50:
+			min = 50;
+			mCurrentStage = Stage.SetMins2;
+			setText(getString(R.string.min2));
+			return true;
+			
+		case R.id.m0:
+			mCurrentStage = Stage.AM_PM;
+			setText(getString(R.string.ampm));
+			return true;
+		case R.id.m1:
+			min++;
+			mCurrentStage = Stage.AM_PM;
+			setText(getString(R.string.ampm));
+			return true;
+		case R.id.m2:
+			min+=2;
+			mCurrentStage = Stage.AM_PM;
+			setText(getString(R.string.ampm));
+			return true;
+		case R.id.m3:
+			min+=3;
+			mCurrentStage = Stage.AM_PM;
+			setText(getString(R.string.ampm));
+			return true;
+		case R.id.m4:
+			min+=4;
+			mCurrentStage = Stage.AM_PM;
+			setText(getString(R.string.ampm));
+			return true;
+		case R.id.m5:
+			min+=5;
+			mCurrentStage = Stage.AM_PM;
+			setText(getString(R.string.ampm));
+			return true;
+		case R.id.m6:
+			min+=6;
+			mCurrentStage = Stage.AM_PM;
+			setText(getString(R.string.ampm));
+			return true;
+		case R.id.m7:
+			min+=7;
+			mCurrentStage = Stage.AM_PM;
+			setText(getString(R.string.ampm));
+			return true;
+		case R.id.m8:
+			min+=8;
+			mCurrentStage = Stage.AM_PM;
+			setText(getString(R.string.ampm));
+			return true;
+		case R.id.m9:
+			min+=9;
+			mCurrentStage = Stage.AM_PM;
+			setText(getString(R.string.ampm));
+			return true;
+			
+		case R.id.am:
+			am = true;
+			mCurrentStage = Stage.Confirm;
+			setText(hour + ":" + min + " AM");
+			return true;
+		case R.id.pm:
+			am = false;
+			mCurrentStage = Stage.Confirm;
+			setText(hour + ":" + min + " PM");
 			return true;
 			
 		default:
@@ -96,15 +324,15 @@ public class TaskActivity extends Activity {
 	 * Play the standard Glass tap sound
 	 */
 	protected void playClickSound() {
-		//AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-		//audio.playSoundEffect(Sounds.TAP);
+		AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+		audio.playSoundEffect(Sounds.TAP);
 	}
 
     	/**
 	 * Play the standard Glass tap sound
 	 */
 	protected void playSuccessSound() {
-		//AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-		//audio.playSoundEffect(Sounds.SUCCESS);
+		AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+		audio.playSoundEffect(Sounds.SUCCESS);
 	}
 }
