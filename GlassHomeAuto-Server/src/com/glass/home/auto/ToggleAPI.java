@@ -59,4 +59,23 @@ public class ToggleAPI {
 		return states;
 	}
 	
+	@ApiMethod(name = "toggle.motion", path = "toggle_motion", httpMethod = HttpMethod.GET)
+	public States motionDetected()	{
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Key key = KeyFactory.createKey("toggler", 2357);//database key
+		if(states == null)	{
+			try {
+				dataStates = datastore.get(key);
+			} catch (EntityNotFoundException e) {
+				System.out.println("FAIL TO GET KEY");
+				e.printStackTrace();
+			}
+			states = new States();
+			states.setLights((Boolean) dataStates.getProperty("lights"));
+			states.setAc((Boolean) dataStates.getProperty("ac"));
+			states.setMotion((Long) dataStates.getProperty("motion"));
+		}
+		states.setMotion(System.currentTimeMillis());
+		return states;
+	}
 }
