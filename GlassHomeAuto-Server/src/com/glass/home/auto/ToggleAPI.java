@@ -50,7 +50,7 @@ public class ToggleAPI {
 			s.setMotion(System.currentTimeMillis());
 		}
 		states = s;
-		dataStates = new Entity("Toggle States", key);
+		dataStates = new Entity(key);
 		dataStates.setProperty("lights", states.isLights());
 		dataStates.setProperty("ac", states.isAc());
 		dataStates.setProperty("motion", states.getMotion());
