@@ -21,12 +21,12 @@ import com.google.appengine.api.datastore.KeyFactory;
 public class ToggleAPI {
 
 	private static States states;//states of each toggle-able item
-	private static DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	private static Entity dataStates;
-	private static Key key = KeyFactory.createKey("toggler", 0);//database key
 	
 	@ApiMethod(name = "toggle.get", path = "toggle_get", httpMethod = HttpMethod.GET)
 	public States getStates()	{
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Key key = KeyFactory.createKey("toggler", 2357);//database key
 		if(states == null)	{
 			try {
 				dataStates = datastore.get(key);
@@ -44,6 +44,8 @@ public class ToggleAPI {
 	
 	@ApiMethod(name="toggle.put", path = "toggle_put", httpMethod = HttpMethod.PUT)
 	public States putStates(States s)	{
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Key key = KeyFactory.createKey("toggler", 2357);//database key
 		if(s.getMotion() == 1){//arduino sets motion to 1 when motion detected
 			s.setMotion(System.currentTimeMillis());
 		}
