@@ -154,6 +154,10 @@ public class TaskActivity extends Activity {
 			mCurrentStage = Stage.SetHours;
 			setText(getString(R.string.hour));
 			return true;
+		case R.id.ctime:
+			mCurrentStage = Stage.Confirm;
+			setText((new java.util.Date(System.currentTimeMillis())).toString());
+			return true;
 			
 		case R.id.h1:
 			hour = 1;
