@@ -10,6 +10,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="com.google.android.glass.permission.DEVELOPMENT" />
 	
     <application
@@ -22,7 +23,11 @@
             <intent-filter>
                 <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             <meta-data
                 android:name="com.google.android.glass.VoiceTrigger"
                 android:resource="@xml/voice_trigger_start" />
@@ -32,11 +37,6 @@
             android:label="@string/title_activity_toggle" >
             <intent-filter>
                 <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
             <meta-data
@@ -66,6 +66,13 @@
             android:name="com.gset.glasshomeauto.LightStatusActivity"
             android:label="@string/title_activity_light_status" >
         </activity>
+        <receiver android:name="com.gset.glasshomeauto.BootUpReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver> 
+        <service android:name="com.gset.glasshomeauto.ToggleGetService"
+                 android:enabled="true" />
     </application>
 
 </manifest>
