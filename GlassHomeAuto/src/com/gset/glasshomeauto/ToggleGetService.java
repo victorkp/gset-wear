@@ -59,7 +59,7 @@ public class ToggleGetService extends Service implements ToggleGetTask.OnToggleG
 					Log.i("TOGGLESERVICE", "Service checking");
 			       try {
 			    	   Thread.sleep(5 * 60 * 1000);
-			    	   //Thread.sleep(60*1000);
+			    	   //Thread.sleep(30*1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				} 
