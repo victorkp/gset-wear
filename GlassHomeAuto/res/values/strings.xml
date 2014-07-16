@@ -15,7 +15,6 @@
     <string name="light_toggle">Lights</string>
     <string name="tv_toggle">TV</string>
     <string name="ac_toggle">A/C</string>
-    
     <string name="OFF">OFF</string>
     <string name="ON">ON</string>
 
@@ -43,9 +42,9 @@
     <string name="min1">Select a Tens Minute</string>
     <string name="min2">Select a Minute</string>
     <string name="ampm">AM or PM</string>
-    
     <string name="title_activity_light">LightActivity</string>
     <string name="title_activity_light_status">LightStatusActivity</string>
-
     <string name="j_son">{lights:false, a_c:false, motion:0}</string>
+    <string name="title_activity_motion_notification">MotionNotificationActivity</string>
+
 </resources>
