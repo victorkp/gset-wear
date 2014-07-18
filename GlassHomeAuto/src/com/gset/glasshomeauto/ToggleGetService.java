@@ -57,6 +57,7 @@ public class ToggleGetService extends Service implements ToggleGetTask.OnToggleG
 						States.setMotion(lastMotion);
 						Intent notificationIntent = new Intent(getBaseContext(), MotionNotificationActivity.class);
 						notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 						getApplication().startActivity(notificationIntent);
 						//Toast.makeText(context, "New Motion time: "+lastMotion+" millis", Toast.LENGTH_LONG).show();
 					}
