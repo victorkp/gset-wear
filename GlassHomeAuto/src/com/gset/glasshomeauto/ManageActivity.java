@@ -37,6 +37,7 @@ public class ManageActivity extends Activity {
 	private ArrayList<String> menuNames = new ArrayList<String>();
 	
 	private int id;
+	private Calendar time;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class ManageActivity extends Activity {
 		dir = getFilesDir();
 		
 		mCurrentStage = Stage.Start;
+		mText = (TextView) findViewById(R.id.text);
 	}
 	
 	@Override
@@ -78,7 +80,7 @@ public class ManageActivity extends Activity {
 			getMenuInflater().inflate(R.menu.manage_menu, menu);
 			files = dir.listFiles();
 			if(files.length == 0) {
-				menu.add("Nothing to manage");
+				menu.add("Nothing to delete");
 			}
 			else {
 				for (File f: files) {
@@ -97,19 +99,28 @@ public class ManageActivity extends Activity {
 						}
 						String read = new String(b, "UTF-8");
 						read = read.substring(0, 21);
-						id = Integer.parseInt(read.substring(0, 10));
+						id = Integer.parseInt(read.substring(0, 1));
 						SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
-						Calendar c = Calendar.getInstance();
+						time = Calendar.getInstance();
 						try {
-							c.setTime(sdf.parse(read.substring(13)));
+							time.setTime(sdf.parse(read.substring(4)));
 						} catch (ParseException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						//Date time = new Date(read.substring(13));
-						//String taskName = ((MenuItem) findViewById(id)).getTitle().toString();
-						Log.i("MenuItem", ((MenuItem) findViewById(id)).getTitle().toString());
-						String s = id + " " + sdf.format(c.getTime()) + " ";
+						String s;
+						switch(id) {
+						case 0:
+							s = "Lights";
+							break;
+						case 1:
+							s = "AC";
+							break;
+						default:
+							s = "";
+							break;
+						}
+						s = s + " - " + sdf.format(time.getTime()) + " ";
 						menu.add(s);
 						menuNames.add(s);
 					}
@@ -136,10 +147,10 @@ public class ManageActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (mCurrentStage == Stage.Tasks) {
-			Log.i("task name", item.getTitle().toString().substring(0, 18));
+			Log.i("task name", item.getTitle().toString().substring(0, 9));
 			for (int i=0; i<menuNames.size(); i++) {
-				Log.i("menu name", i + " - " + menuNames.get(i).substring(18));
-				if(item.getTitle().toString().substring(0, 18).equals(menuNames.get(i).substring(0, 18))){
+				Log.i("menu name", i + " - " + menuNames.get(i).substring(9));
+				if(item.getTitle().toString().equals(menuNames.get(i))){
 					Log.i("stuff", "happened");
 					if (files.length == 0) {
 						//Log.i("files", "Array is null");
@@ -150,7 +161,7 @@ public class ManageActivity extends Activity {
 						//Log.i("file", selected.toString());
 					}
 					mCurrentStage = Stage.Manage;
-					//setText("Delete the file?");
+					setText("Delete the file?");
 					return true;
 				}
 			}

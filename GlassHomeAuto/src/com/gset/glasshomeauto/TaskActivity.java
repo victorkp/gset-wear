@@ -194,9 +194,13 @@ public class TaskActivity extends Activity {
 			startActivity(manageIntent);
 			return true;
 			
-		case R.id.light_toggle_menu:
-		case R.id.ac_toggle_menu:
-			toggleID = item.getItemId();
+		case R.id.light_toggle_menu: //assign lights a number 0
+			toggleID = 0;
+			toggleText = (String) item.getTitle();
+			mCurrentStage = Stage.TimeLocation;
+			setText(getString(R.string.time_location));
+		case R.id.ac_toggle_menu: //assign ac a number 1
+			toggleID = 1;
 			toggleText = (String) item.getTitle();
 			mCurrentStage = Stage.TimeLocation;
 			setText(getString(R.string.time_location));
