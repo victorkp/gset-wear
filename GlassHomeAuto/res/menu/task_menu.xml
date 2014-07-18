@@ -6,7 +6,7 @@
         android:title="@string/add_task"/>
     
     <item
-        android:id="@+id/task1"
-        android:title="@string/task1" />
+        android:id="@+id/manageTasks"
+        android:title="@string/tasks" />
     
 </menu>

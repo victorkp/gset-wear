@@ -24,21 +24,6 @@
     "maxAge" : 0
   },
   "methods" : {
-    "toggle.toggle.motion" : {
-      "path" : "toggle_motion",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.glass.home.auto.ToggleAPI.motionDetected",
-      "request" : {
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "toggle.toggle.put" : {
       "path" : "toggle_put",
       "httpMethod" : "PUT",
@@ -69,6 +54,21 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "toggle.toggle.motion" : {
+      "path" : "toggle_motion",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.glass.home.auto.ToggleAPI.motionDetected",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
     }
   },
   "descriptor" : {
@@ -91,11 +91,6 @@
       }
     },
     "methods" : {
-      "com.glass.home.auto.ToggleAPI.motionDetected" : {
-        "response" : {
-          "$ref" : "States"
-        }
-      },
       "com.glass.home.auto.ToggleAPI.putStates" : {
         "request" : {
           "$ref" : "States"
@@ -105,6 +100,11 @@
         }
       },
       "com.glass.home.auto.ToggleAPI.getStates" : {
+        "response" : {
+          "$ref" : "States"
+        }
+      },
+      "com.glass.home.auto.ToggleAPI.motionDetected" : {
         "response" : {
           "$ref" : "States"
         }

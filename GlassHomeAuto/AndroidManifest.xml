@@ -68,6 +68,13 @@
             android:label="@string/title_activity_light_status" >
         </activity>
 
+        <activity
+            android:name="com.gset.glasshomeauto.ManageActivity"
+            android:label="@string/title_activity_manage" >
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+		</activity>
         <receiver android:name="com.gset.glasshomeauto.BootUpReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
