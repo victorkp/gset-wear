@@ -47,5 +47,6 @@
     <string name="title_activity_manage">ManageActivity</string>
     <string name="delete">Delete Task</string>
     <string name="delete_message">Which Task(s) Should be Deleted?</string>
+    <string name="title_activity_motion_notification">MotionNotificationActivity</string>
 
 </resources>
