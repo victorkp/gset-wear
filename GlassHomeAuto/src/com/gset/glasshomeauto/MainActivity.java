@@ -26,11 +26,11 @@ public class MainActivity extends Activity {
 		//getActionBar().hide();
 	}
 	
-	@Override
+	/*@Override
 	public void onAttachedToWindow() {
 	    super.onAttachedToWindow();
 	    openOptionsMenu();
-	}
+	}*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
