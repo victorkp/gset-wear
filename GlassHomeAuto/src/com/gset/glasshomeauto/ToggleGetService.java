@@ -54,14 +54,17 @@ public class ToggleGetService extends Service implements ToggleGetTask.OnToggleG
 					else if(lastMotion != States.getMotion())	{
 						lastMotion = States.getMotion();
 						Log.i("TOGGLESERVICE", "New Motion time: "+lastMotion+" millis");
-						Intent notificationIntent = new Intent(ToggleGetService.this, MotionNotificationActivity.class);
-						startActivity(notificationIntent);
+						States.setMotion(lastMotion);
+						Intent notificationIntent = new Intent(getBaseContext(), MotionNotificationActivity.class);
+						notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						getApplication().startActivity(notificationIntent);
 						//Toast.makeText(context, "New Motion time: "+lastMotion+" millis", Toast.LENGTH_LONG).show();
 					}
 					Log.i("TOGGLESERVICE", "Service checking");
 			       try {
 			    	   //Thread.sleep(5 * 60 * 1000);
-			    	   Thread.sleep(30*1000);
+			    	   Thread.sleep(15*1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				} 

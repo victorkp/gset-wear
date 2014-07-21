@@ -1,31 +1,28 @@
 package com.gset.glasshomeauto;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import com.gset.glasshomeauto.network.States;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
-import android.os.Build;
 
 public class MotionNotificationActivity extends Activity {
 
-	private TextView time;
+	private static TextView time;
+	public static String timeStamp;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_motion_notification);
 		time = (TextView) findViewById(R.id.tvMotionNotification);
+		Date d = new Date(States.getMotion());
+	    timeStamp = "Motion Detected:\n"+d.toString();
+	    time.setText(timeStamp);
 	}
 
 	@Override
@@ -47,11 +44,17 @@ public class MotionNotificationActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onPause()
+	 */
 	@Override
 	protected void onPause() {
 		super.onPause();
+		time = (TextView) findViewById(R.id.tvMotionNotification);
 		Date d = new Date(States.getMotion());
-	    time.setText("Motion Detected:\n"+d.toString());
+	    timeStamp = "Motion Detected:\n"+d.toString();
+	    time.setText(timeStamp);
 	}
 
 }
