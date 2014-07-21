@@ -3,6 +3,8 @@ package com.gset.glasshomeauto;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,7 +19,9 @@ public class LiveStreamingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_live_streaming);
-
+		Uri stream = Uri.parse("rtsp://ec2-54-88-189-105.compute-1.amazonaws.com/live/gset-wear");
+		Intent videointent = new Intent(Intent.ACTION_VIEW,stream); 
+		startActivity(videointent);
 	}
 
 	@Override
@@ -26,18 +30,6 @@ public class LiveStreamingActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.live_streaming, menu);
 		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
 	}
 
 }
