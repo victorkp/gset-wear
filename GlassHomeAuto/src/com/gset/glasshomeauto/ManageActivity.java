@@ -173,6 +173,7 @@ public class ManageActivity extends Activity {
 					//Log.i("no file", "no file");
 				}
 				else {
+					Log.i("file", "ready to delete");
 					selected.delete();
 					finish();
 				}
