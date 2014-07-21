@@ -190,6 +190,7 @@ public class TaskActivity extends Activity {
 			setText(getString(R.string.add_tasks_stage));
 			return true;
 		case R.id.manageTasks:
+			Log.i("made it", "go to delete task");
 			Intent manageIntent = new Intent(this, ManageActivity.class);
 			startActivity(manageIntent);
 			return true;
@@ -230,7 +231,7 @@ public class TaskActivity extends Activity {
 			min = c.get(Calendar.MINUTE);*/
 			SimpleDateFormat stf = new SimpleDateFormat("h:mm a");
 			fileText = toggleID + " - " + stf.format(d);
-			setText(fileText);
+			setText(toggleText + " - " + stf.format(d));
 			return true;
 			
 		case R.id.h1:
