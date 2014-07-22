@@ -12,7 +12,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.google.android.glass.view.WindowUtils;
-
 import com.gset.glasshomeauto.network.*;
 
 public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGetListener, TogglePutTask.OnTogglePutListener {
@@ -97,30 +96,21 @@ public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGe
 				int id = item.getItemId();
 				switch(id)	{
 				case R.id.light_toggle_menu:
-					tpt = new TogglePutTask();
-					tpt.setListener(this);
+					Intent toggle = new Intent(this, ToggleLightsService.class);
+					toggle.putExtra("task", 0);
 					if(States.isLights())
 						lightText.setTitle("Lights: ON");
 					else
 						lightText.setTitle("Lights: OFF");
-					States.switchLights();
-					String lights = "false";
-					String ac = "false";
-					if(States.isLights()) lights = "true";
-					if(States.isA_c()) ac = "true";
-					tpt.setJSON("{ \"lights\" : \"" + lights + "\"," +
-							"\"ac\" : \"" + ac + "\"," +
-							"\"motion\" : \"" + States.getMotion() + "\" } ");
-					tpt.execute();
 					break;
 				case R.id.ac_toggle_menu:
-					tpt = new TogglePutTask();
-					tpt.setListener(this);
+					Intent toggle1 = new Intent(this, ToggleLightsService.class);
+					toggle1.putExtra("task", 1);
 					if(States.isA_c())
 						acText.setTitle("A/C: ON");
 					else
 						acText.setTitle("A/C: OFF");
-					States.switchA_c();
+					/*States.switchA_c();
 					String lights1 = "false";
 					String ac1 = "false";
 					if(States.isLights()) lights1 = "true";
@@ -128,7 +118,7 @@ public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGe
 					tpt.setJSON("{ \"lights\": \"" + lights1 + "\"," +
 							"\"ac\": \"" + ac1 + "\"," +
 							"\"motion\": \"" + States.getMotion() + "\" } ");
-					tpt.execute();
+					tpt.execute();*/
 					break;
 	    	//FILL IN IF STATEMENTS HERE
 	    }
