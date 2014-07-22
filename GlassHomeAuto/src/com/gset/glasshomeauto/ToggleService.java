@@ -74,7 +74,7 @@ public class ToggleService extends Service {
 			}
 		}).start();
 		
-		return START_NOT_STICKY;
+		return START_STICKY;
 	}
 
 	@Override

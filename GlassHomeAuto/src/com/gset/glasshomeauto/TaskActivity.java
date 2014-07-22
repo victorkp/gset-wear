@@ -384,7 +384,19 @@ public class TaskActivity extends Activity {
 				fileText = fileText + "0";
 			}
 			fileText = fileText + min + " AM";
-			setText(fileText);
+			String s;
+			switch(toggleID) {
+			case 0:
+				s = "Lights";
+				break;
+			case 1:
+				s = "AC";
+				break;
+			default:
+				s = "";
+				break;
+			}
+			setText(s + fileText.substring(1));
 			return true;
 		case R.id.pm:
 			am = false;
