@@ -86,7 +86,7 @@
             android:enabled="true" />
         
         <service
-            android:name="com.gset.glasshomeauto.ToggleLightsService"
+            android:name="com.gset.glasshomeauto.ToggleService"
             android:enabled="true" />
 
         <activity

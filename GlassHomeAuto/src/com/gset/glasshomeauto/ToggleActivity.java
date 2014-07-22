@@ -23,7 +23,6 @@ public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGe
 	private Stage mCurrentStage;
 	
 	private ToggleGetTask tgt;
-	private TogglePutTask tpt;
 	
 	private MenuItem lightText;
 	private MenuItem acText;
@@ -94,18 +93,20 @@ public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGe
 	    if (featureId == WindowUtils.FEATURE_VOICE_COMMANDS || featureId == Window.FEATURE_OPTIONS_PANEL) {
 	    	if (featureId == WindowUtils.FEATURE_VOICE_COMMANDS || featureId == Window.FEATURE_OPTIONS_PANEL) {
 				int id = item.getItemId();
+				Intent toggle = new Intent(this, ToggleService.class);
 				switch(id)	{
 				case R.id.light_toggle_menu:
-					Intent toggle = new Intent(this, ToggleLightsService.class);
 					toggle.putExtra("task", 0);
+					startService(toggle);
+					Log.i("INFO", "hit light");
 					if(States.isLights())
 						lightText.setTitle("Lights: ON");
 					else
 						lightText.setTitle("Lights: OFF");
 					break;
 				case R.id.ac_toggle_menu:
-					Intent toggle1 = new Intent(this, ToggleLightsService.class);
-					toggle1.putExtra("task", 1);
+					toggle.putExtra("task", 1);
+					startService(toggle);
 					if(States.isA_c())
 						acText.setTitle("A/C: ON");
 					else
@@ -120,6 +121,8 @@ public class ToggleActivity extends Activity implements ToggleGetTask.OnToggleGe
 							"\"motion\": \"" + States.getMotion() + "\" } ");
 					tpt.execute();*/
 					break;
+				default:
+					Log.e("INFO", "error selecting task");	
 	    	//FILL IN IF STATEMENTS HERE
 	    }
 	    	}
