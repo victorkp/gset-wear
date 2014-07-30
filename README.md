@@ -10,6 +10,7 @@ Students
 *  Quinn Williamson
 
 Project Mentor: Victor Kaiser-Pendergrast
+
 Resident Teaching Assistant: Anthony Yang
 
 ## Project Details ##
