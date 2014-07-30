@@ -16,8 +16,7 @@ Resident Teaching Assistant: Anthony Yang
 This is the code for the "The Next Step in Computing: Wearable Devices" home automation project at NJ Governor's School of Engineering and Technology. The goal was to make a home automation project in which Glass would be able to control various pieces of hardware (by relaying messages through a server to a microcontroller of some sort).
 
 ## Final Presentation ##
-The final presentation given by the students of this application can be seen [here](http://www.youtube.com/watch?v=3blyD_NicHs?autoplay=1).
-[![Final Presentation on Youtube](http://img.youtube.com/vi/3blyD_NicHs/0.jpg)](http://www.youtube.com/watch?v=3blyD_NicHs)
+The final presentation given by the students of this application can be viewed here:
 [![Final Presentation on Youtube](presentation.png)](http://www.youtube.com/watch?v=3blyD_NicHs)
 
 ## About this Repository ##
